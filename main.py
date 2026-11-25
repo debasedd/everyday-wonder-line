@@ -13,6 +13,11 @@ import os
 
 LINE = "The lift doors opened on a stranger humming my dead grandfather's favourite song, and for one floor the whole building felt like his kitchen again."
 
+# The gate for this bounty: the entry must be 1 to 200 characters, one sentence.
+# Fail loudly here rather than shipping an entry the gate would reject.
+assert 1 <= len(LINE) <= 200, f"entry is {len(LINE)} chars, outside 1-200"
+assert LINE.count(".") == 1, "entry must stay a single sentence"
+
 
 def main() -> None:
     os.makedirs("/output", exist_ok=True)
